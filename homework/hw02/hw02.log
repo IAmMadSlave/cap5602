@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.3)  8 SEP 2015 00:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.3)  8 SEP 2015 01:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -659,11 +659,8 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
-ABD: EveryShipout initializing macros
-
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 127.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+ABD: EveryShipout initializing macros [1{/var/lib/texmf/fonts/map/pdftex/updmap
+/pdftex.map}
 
 ]
 \forest@temp@box=\box32767 (local)
@@ -682,11 +679,7 @@ LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 127.
 \forest@temp@box=\box32754 (local)
 \forest@temp@box=\box32753 (local)
 \forest@temp@box=\box32752 (local)
-
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 190.
-
-[2
+ [2
 
 ]
 \forest@temp@box=\box32767 (local)
@@ -705,60 +698,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--219
 
  []
 
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 222.
-
 [3
 
-]
+] [4
 
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 248.
+] [5
 
-[4
-
-]
-
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 262.
-
-[5
-
-]
-
-Package lastpage Warning: Rerun to get the references right on input line 267.
-
-
+] 
 AED: lastpage setting LastPage
 
 Package caption Warning: Unused \captionsetup[lstlisting] on input line 24.
 See the caption package documentation for explanation.
 
-(./hw02.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(./hw02.aux) ) 
 Here is how much of TeX's memory you used:
- 20261 strings out of 493304
- 436122 string characters out of 6139872
- 486777 words of memory out of 5000000
- 23402 multiletter control sequences out of 15000+600000
- 5007 words of font info for 19 fonts, out of 8000000 for 9000
+ 20259 strings out of 493304
+ 436101 string characters out of 6139872
+ 486779 words of memory out of 5000000
+ 23401 multiletter control sequences out of 15000+600000
+ 4699 words of font info for 18 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  102i,11n,136p,859b,2550s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on hw02.pdf (5 pages, 78433 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on hw02.pdf (5 pages, 69547 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 47 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
