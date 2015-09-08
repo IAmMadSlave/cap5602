@@ -1,0 +1,267 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{forest}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+\parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center header
+\rhead{\hmwkDueDate} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+}
+
+\forestset{qtree/.style={for tree={
+                    parent anchor=south, child anchor=north,
+            align=center, inner sep=1pt}},
+        .style={qtree}}
+
+%----------------------------------------------------------------------------------------
+%   COLORS AND LANGUAGAGE
+%----------------------------------------------------------------------------------------
+
+\lstset{
+    frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,language=Java,basicstyle=\ttfamily,
+    breaklines=true,columns=fullflexible,keepspaces=true,escapeinside={\%*}{*)}
+       }
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Homework\ \#02} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ September\ 8,\ 2015} % Due date
+\newcommand{\hmwkClass}{CAP\ 5602} % Course/class
+\newcommand{\hmwkClassTime}{5:00pm} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Finlayson} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Musa V. Ahmed} % Your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\belowcaptionskip=-10pt
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    3.14 Which of the following are true and which are false? Explain your answers.
+    \begin{enumerate}[label=\alph*.]
+        \item Depth-first search always expands at least as many nodes as $A^*$ search with
+            an admissible heuristic.
+        \item $h(n)=0$ is an admissible heuristic for the 8-puzzle.
+        \item $A^*$ is of no use in robotics because precepts, states, and actions are 
+            continuous.
+        \item Breadth-first search is complete even if zero step costs are allowed.
+        \item Assume that a rook can move on a chessboard any number of squares in a 
+            straight line, vertically or horizontally, but cannot jump over other pieces. 
+            Manhattan distance is an admissible heuristic for the problem of moving the
+            rook from square A to square B in the smallest number of moves.
+    \end{enumerate}
+
+    \vspace{5 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item False. Depth-first search may by chance find the goal state without needing 
+            to travel back. In which case it expand less nodes than $A^*$ search. 
+        \item True. Admissible heuristics never overestimate thus $h(n)=0$ is admissible for 
+            the 8-puzzle.
+        \item False. While precepts, states, and actions are continuous they can be made 
+            discrete.
+        \item True. Cost has no effect on the solution.
+        \item False. Manhattan distance measures the number of squares as distance. For 
+            example, four squares. However, a rook can move anywhere from one to eight 
+            squares in a single move.
+    \end{enumerate}
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    3.15 Consider a state space where the start state is number $1$ and each state $k$ has two 
+    successors: numbers $2k$ and $2k+1$.
+    \begin{enumerate}[label=\alph*.]
+        \item Draw the portion of the state space for states $1$ to $15$.
+        \item Suppose the goal state is $11$. List the order in which nodes will be visited 
+            for breadth-first search, depth-limited search with limit $3$, and iterative 
+            deepening search.
+        \item How well would bidirectional search work on this problem? What is the 
+            branching factor in each direction of the bidirectional search?
+        \item Does the answer to (c) suggest a reformulation of the problem what would 
+            allow you to solve the problem of getting from state $1$ to a given goal state 
+            with almost no search?
+        \item Call the action going from $k$ to $2k$ left, and the action going to $2k+1$ right. 
+            Can you find an algorithm that outputs the solution to this problem without 
+            any search at all?
+    \end{enumerate}
+
+    \vspace{5 mm}
+    \begin{enumerate}[label=\alph*.]    
+        \item 
+              \begin{forest}
+                [1
+                    [2
+                        [4
+                            [8]
+                            [9]]
+                        [5
+                            [10]
+                            [11]]]
+                    [3
+                        [6
+                            [12]
+                            [13]]
+                        [7
+                            [14]
+                            [15]]]]
+              \end{forest}
+        \item Breadth-first: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15\\
+              Depth-limited: 1, 2, 4, 8, 9, 5, 10, 11\\
+              Iterative Deepening: \\
+              1\\
+              1, 2, 3\\
+              1, 2, 4, 5, 3, 6, 7\\
+              1, 2, 4, 8, 9, 5, 10, 11
+        \item Very well, the branching factor in the reverse direction (1) is less 
+              than the forward direction (2).
+        \item Reversing the problem, making 11 the start state and 1 the goal state 
+            will result in barely any search site in this direction the branching 
+            factor is 1.
+        \item Converting the goal state to binary (e.g., 11 to 1011). Starting from left 
+            to right, skipping the left most digit we go left if we find a 0 and right if 1.
+    \end{enumerate}
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    3.18 Describe a state space in which iterative deepening search performs much worse 
+    than depth-first search (for example, $\mathcal{O}(n^2)$ vs. $\mathcal{O}(n)$).
+
+    \vspace{5 mm}
+    Imagine a tree than looks like the following:
+
+    \begin{forest}
+        [A[B[C[D[E]]]]]
+    \end{forest}
+
+    \vspace{2 mm}
+    Performing a Depth-first search results in the following:\\
+    A, B, C, D, E\\
+    \\
+    Performing a Iterative deepening search results in the following:\\
+    A\\
+    A, B\\
+    A, B, C\\
+    A, B, C, D\\
+    A, B, C, D, E\\
+
+    In this case Iterative deepening performs much worse than Depth-first search.
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    3.21 Prove each of the following statements, or give a counterexample:
+    \begin{enumerate}[label=\alph*.]
+        \item Breadth-first search is a special case of uniform-cost search.
+        \item Depth-first search is a special case of best-first tree search.
+        \item Uniform-cost search is a special case of $A^*$ search.
+    \end{enumerate}
+
+    \vspace{5 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item If we make all the edge weights equal then uniform-cost will be identical 
+            to breadth-first.
+        \item If we perform a best-first search with a heuristic evaluation function $f(n)$ 
+            that prefers nodes with the greatest depth, then it will behave like a 
+            depth-first search.
+        \item Uniform-cost search is a $A^*$ search without a heuristic, essentially $h(n)=0$ always.
+    \end{enumerate}
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    3.23 Trace the operation of $A^*$ search applied to the problem of getting to Bucharest 
+    from Lugoj using the straight-line heuristic. That is, show the sequence of nodes that 
+    the algortihm will consider and the $f, g, $ and $h$ score for each node.
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
