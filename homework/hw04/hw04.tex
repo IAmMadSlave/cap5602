@@ -1,0 +1,196 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{forest}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+\parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center header
+\rhead{\hmwkDueDate} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+}
+
+\forestset{qtree/.style={for tree={
+                    parent anchor=south, child anchor=north,
+            align=center, inner sep=1pt}},
+        .style={qtree}}
+
+%----------------------------------------------------------------------------------------
+%   COLORS AND LANGUAGAGE
+%----------------------------------------------------------------------------------------
+
+\lstset{
+    frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,language=Java,basicstyle=\ttfamily,
+    breaklines=true,columns=fullflexible,keepspaces=true,escapeinside={\%*}{*)}
+       }
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Homework\ \#04} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ September\ 22,\ 2015} % Due date
+\newcommand{\hmwkClass}{CAP\ 5602} % Course/class
+\newcommand{\hmwkClassTime}{5:00pm} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Finlayson} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Musa V. Ahmed} % Your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\belowcaptionskip=-10pt
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{6.1} How many solutions are there for the map-coloring problem in
+    Figure 6.1? How many solutions if four colors are allowed? Two colors?
+
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{6.2} Consider the problem of placing $k$ knights on an $n\times n$
+    chessboard such that no two knights are attacking each other, where $k$ is
+    given an $k\leq n^2$.
+
+    \begin{enumerate}[label=\alph*.]
+        \item Choose a CSP formulation. In your formulation, what are the
+            variables?
+        \item What are the possible values of each variable?
+        \item What sets of variables are constrained, and how?
+        \item Now consider the problem of putting \emph{as many knights as
+            possible} on the board without any attacks. Explain how to solve
+            this with local search by defining appropriate \verb!ACTIONS! and
+            \verb!RESULT! functions and a sensible objective function. 
+    \end{enumerate}
+
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{6.11} Use the AC-3 algorithm to show that arc consistency can
+    detect the inconsistency of the partial assignment $\{WA=green,V=red\}$ for
+    the problem shows in Figure 6.1.
+
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{7.6} Prove, or find a counterexample to, each of the following
+    assertions:
+    \begin{enumerate}[label=\alph*.]
+        \item If $\alpha \models \gamma$ or $\beta \models \gamma$ (or both)
+            then $(\alpha \wedge \beta) \models \gamma$
+        \item If $\alpha \models (\beta \wedge \gamma)$ then $\alpha \models
+            \beta$ and $\alpha \models \gamma$
+        \item If $\alpha \models (\beta \vee \gamma)$ then $\alpha \models
+            \beta$ or $\alpha \models \gamma$ (or both)
+    \end{enumerate}
+
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{7.18} Consider the following sentence:\\
+    $[(Food \Rightarrow Party)\vee (Drinks \Rightarrow Party)]\Rightarrow
+    [(Food \wedge Drinks)\Rightarrow Party]$
+
+    \begin{enumerate}[label=\alph*.]
+        \item Determine, using enumeration, whether this sentence is valid,
+            satisfiable (but not valid), or unsatisfiable
+        \item Convert the left-hand and right-hand sides of the main
+            implication into CNF, showing each step, and explaining how the
+            results confirm your answer to (a)
+        \item Prove your answer to (a) using resolution.
+    \end{enumerate}
+
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
