@@ -1,0 +1,259 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{forest}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+\parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center header
+\rhead{\hmwkDueDate} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+}
+
+\forestset{qtree/.style={for tree={
+                    parent anchor=south, child anchor=north,
+            align=center, inner sep=1pt}},
+        .style={qtree}}
+
+%----------------------------------------------------------------------------------------
+%   COLORS AND LANGUAGAGE
+%----------------------------------------------------------------------------------------
+
+\lstset{
+    frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,language=Java,basicstyle=\ttfamily,
+    breaklines=true,columns=fullflexible,keepspaces=true,escapeinside={\%*}{*)}
+       }
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Homework\ \#05} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ September\ 29,\ 2015} % Due date
+\newcommand{\hmwkClass}{CAP\ 5602} % Course/class
+\newcommand{\hmwkClassTime}{5:00pm} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Finlayson} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Musa V. Ahmed} % Your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\belowcaptionskip=-10pt
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{8.6} Which of the following are valid (necessarily true) sentences?
+    \begin{enumerate}[label=\alph*.]
+        \item $(\exists x\ x=x)\Rightarrow (\forall y\ \exists z\ y=z)$
+        \item $\forall x\ P(x)\lor \neg P(x)$
+        \item $\forall x\ Smart(x) \lor (x=x)$
+    \end{enumerate}
+    \vspace{5 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item Valid. 
+        \item Valid. Either $P(x)$ is true or it is not.
+        \item Valid. The right hand side has $x=x$ which will always be true,
+            thus the sentence will always be true.
+    \end{enumerate}
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{8.10} Consider a vocabulary with the following symbols:
+    \begin{itemize}
+        \item $Occupation(p,o):$ Predicate. Person $p$ has occupation $o$.
+        \item $Customer(p1,p2:$ Predicate. Person $p1$ is a customer of person
+            $p2$.
+        \item $Boss(p1,p2):$ Predicate. Person $p1$ is a boss of person $p2$.
+        \item $Doctor, Surgeon, Lawyer, Actor:$ Constants denoting occupations.
+        \item $Emily, Joe:$ Constants denoting people.
+    \end{itemize}
+
+    Use these symbols to write the following assertion in first-order logic:
+    \begin{enumerate}[label=\alph*.]
+        \item Emily is either a surgeon or a lawyer.
+        \item Joe is an actor, but he also holds another job.
+        \item All surgeons are doctors.
+        \item Joe does not have a lawyer (i.e., is not a customer of any
+            lawyer).
+        \item Emily has a boss who is a lawyer.
+        \item There exists a lawyer all of whose customers are doctors.
+        \item Every surgeon has a lawyer.
+    \end{enumerate}
+    \vspace{3 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item $Occupation(Emily,Surgeon) \lor Occupation(Emily,Lawyer)$
+        \item $Occupation(John,Actor) \land \exists o\ \ne Actor \land
+            Occupation(John,o)$
+        \item $\forall p\ Occupation(p,Surgeon) \Rightarrow
+            Occupation(p,Doctor)$
+        \item $\neg \exists p\ Customer(John,p) \land Occupation(p,Lawyer)$
+        \item $\exists p\ Boss(p,Emily) \land Occupation(p,Lawyer)$
+        \item $\exists p\ Occupation(p,Lawyer) \land \forall q\ Customer(q,p)
+            \Rightarrow Occupation(q,Doctor)$
+        \item $\forall p\ Occupation(p,Surgeon) \Rightarrow \exists q\
+            Occupation(q,Lawyer) \land Customer(p,q)$
+    \end{enumerate}
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{8.23} For each of the following sentence in English, decide if the
+    accompanying first-order logic sentence is a good translation. If not,
+    explain why not and correct it. (Some sentences have more than one error!)
+    \begin{enumerate}[label=\alph*.]
+        \item No two people have the same social security number.\\
+            $\neg \exists x,y,n\ Person(x) \land Person(y) \Rightarrow
+            [HasSS\#(x,n) \land HasSS\#(y,n)]$
+        \item John's social security number is the same as Mary's.\\
+            $\exists n\ HasSS\#(John,n) \land HasSS\#(Mary,x)$
+        \item Everyone's social security number has nine digits.\\
+            $\forall x,n\ Person(x) \Rightarrow [HasSS\#(x,n) \land
+            Digits(n,9)]$
+        \item Rewrite each of the above (uncorrected) sentence using a function
+            symbol $SS\#$ instead of the predicate $HasSS\#$.
+    \end{enumerate}
+    \vspace{3 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item Incorrect.\\
+            $\neg \exists x,y,n\ Person(x) \land Person(y) \Rightarrow
+            [HasSS\#(x,n) \land HasSS\#(y,n)]$
+        \item Correct.
+        \item Incorrect.\\
+            $\forall x,n\ Person(x) \land HasSS\#(x,n) \Rightarrow Digits(n,9)$
+        \item $\neg \exists x,y\ Person(x) \land Person(y) \Rightarrow [SS\#(x)
+            = SS\#(y)]$\\
+            $SS\#(John) = SS\#(Mary)$\\
+            $\forall x\ Person(x) \Rightarrow Digits(SS\#(x),9)$
+    \end{enumerate}
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{9.4} For each pair of atomic sentences, give the most general
+    unifier if it exists:
+    \begin{enumerate}[label=\alph*.]
+        \item $P(A,B,B),P(x,y,z)$
+        \item $Q(y,G(A,B)),Q(G(x,x),y)$
+        \item $Older(Father(y),y),Older(Father(x),John)$
+        \item $Knows(Father(y),y),Knows(x,x)$
+    \end{enumerate}
+    \vspace{5 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item x is A, y is B, and z is B.
+        \item Not possible.
+        \item x and y are John
+        \item Not possible.
+    \end{enumerate}
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+    \textbf{9.6} Write down logical representations for the following
+    sentences, suitable for use with Generalized Modus Ponens:
+    \begin{enumerate}[label=\alph*.]
+        \item Horses, cows, and pigs are mammals.
+        \item An offspring of a horse is a horse.
+        \item Bluebeard is a horse.
+        \item Bluebeard is Charlie's parent.
+        \item Offspring and parent are inverse relations.
+        \item Every mammal has a parent.
+    \end{enumerate}
+    \vspace{5 mm}
+    \begin{enumerate}[label=\alph*.]
+        \item $Horse(x) \Rightarrow Mammal(x)$\\
+              $Cow(x) \Rightarrow Mammal(s)$\\
+              $Pig(x) \Rightarrow Mammal(s)$
+        \item $Offspring(a,b) \land Horse(b) \Rightarrow Horse(a)$
+        \item $Horse(Bluebeard)$
+        \item $Parent(Bluebeard,Charlie)$
+        \item $Offspring(a,b) \Leftrightarrow Parent(b,a)$
+    \end{enumerate}
+
+\end{homeworkProblem}
+\clearpage
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
